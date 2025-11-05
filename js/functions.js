@@ -22,6 +22,7 @@ function isPalindrom(string) {
   return string === reversed;
 }
 
+
 // Дополнительное задание
 function extractNumber(string) {
 
