@@ -97,7 +97,7 @@ const createComment = () => ({
 });
 
 // Создать массив случайной длины от 0 до 30 и заполнить его комментариями
-const creatComments = () => {
+const createComments = () => {
   const count = getRandomInteger(COMMENT_MIN_COUNT, COMMENT_MAX_COUNT);
   return Array.from({ length: count }, createComment);
 };
@@ -110,7 +110,7 @@ const createPictureDescription = () => {
     url: `photos/${randomId}.jpg`,
     description: getRandomArrayElement(DESCRIPTIONS),
     likes: getRandomInteger(LIKE_MIN_COUNT, LIKE_MAX_COUNT),
-    comments: creatComments(),
+    comments: createComments(),
   };
 };
 
