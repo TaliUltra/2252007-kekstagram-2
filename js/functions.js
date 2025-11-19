@@ -1,38 +1,40 @@
-// Функция для проверки длины строки
-const checkStringLength = (string, maxLength) => {
-  if (string.length <= maxLength) {
-    // console.log(true);
-    return true;
-  } else {
-    // console.log(false);
-    return false;
-  }
-};
-console.log(checkStringLength('Hello', 10));
+// 1. Функция для проверки длины строки
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-// Функция для проверки, является ли строка палиндромом
+/*
+console.log(checkStringLength('abcde', 3)); // false
+console.log(checkStringLength('abcde', 5)); // true
+*/
+
+// 2. Функция для проверки, является ли строка палиндромом
 function isPalindrom(string) {
-  string = string.replaceAll(' ', '');
-  string = string.toLowerCase();
+  const normalized = string.replaceAll(' ', '').toLowerCase();
 
   let reversed = '';
-  for (let i = string.length - 1; i >= 0; i--) {
-    reversed += string[i];
+
+  for (let i = normalized.length - 1; i >= 0; i--) {
+
+    reversed += normalized[i];
   }
-  // console.log(string === reversed);
-  return string === reversed;
+  return normalized === reversed;
 }
-console.log(isPalindrom('А роза упала на лапу Азора'));
+
+/*
+console.log(isPalindrom('А роза упала на лапу Азора')); // true
+console.log(isPalindrom('Привет')); // false
+console.log(isPalindrom('Шалаш')); // true
+*/
 
 
-// Дополнительное задание
+// 3. Дополнительное задание. Функция принимает строку, извлекает содержащиеся в ней цифры
 function extractNumber(string) {
 
-  string = string.toString();
+  const source = string.toString();
   let result = '';
 
-  for (let i = 0; i < string.length; i++) {
-    const currentSymbol = string[i];
+  for (let i = 0; i < source.length; i++) {
+    const currentSymbol = source[i];
+
     const parsed = parseInt(currentSymbol, 10);
 
     if (!Number.isNaN(parsed)) {
@@ -40,9 +42,12 @@ function extractNumber(string) {
     }
   }
 
-  if (result === '') {
-    return NaN;
-  }
   return parseInt(result, 10);
 }
-console.log(extractNumber('abc123def'));
+
+/*
+console.log(extractNumber('2023 год')); // 2023
+console.log(extractNumber('ECMAScript 2024')); // 2024
+console.log(extractNumber('1 кефир, 0.5 батона и 2.5 кг яблок')); // 10525
+console.log(extractNumber('Без цифр')); // NaN
+*/
